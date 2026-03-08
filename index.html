@@ -3,519 +3,377 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Meu Perfil ✨</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <title>✿ Stella Laura ✿</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --pink-deep: #d63384;
-      --pink-mid: #f06292;
-      --pink-light: #f8bbd9;
-      --pink-pale: #fce4ec;
-      --pink-blush: #fff0f5;
-      --gold: #f7c873;
+      --pink-deep: #e91e8c;
+      --pink-mid: #ff6eb4;
+      --pink-soft: #ffb3d9;
+      --pink-pale: #ffe0f0;
+      --pink-pastel: #fff0f7;
       --white: #ffffff;
-      --text-dark: #4a2040;
-      --text-mid: #8b4a6b;
+      --red: #ff4466;
+      --yellow: #fff176;
+      --bow-red: #e8003a;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      min-height: 100vh;
       font-family: 'Nunito', sans-serif;
-      background: var(--pink-blush);
+      background-color: var(--pink-pale);
+      background-image:
+        radial-gradient(circle at 10% 20%, #ffb3d940 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, #ff6eb430 0%, transparent 40%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ff6eb4' fill-opacity='0.08'%3E%3Cpath d='M30 5 C20 5 12 13 12 23 C12 33 30 45 30 45 C30 45 48 33 48 23 C48 13 40 5 30 5Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      min-height: 100vh;
       overflow-x: hidden;
-      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='10' cy='10' r='5' fill='%23f06292'/%3E%3C/svg%3E") 10 10, auto;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23ff6eb4' stroke='%23e91e8c' stroke-width='2'/%3E%3C/svg%3E") 12 12, auto;
     }
 
-    /* Floating hearts background */
-    .hearts-bg {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
+    /* ── FLOATING DECORATIONS ── */
+    .floaties {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
       overflow: hidden;
-      z-index: 0;
     }
-
-    .heart {
+    .floaty {
       position: absolute;
-      font-size: 1.2rem;
-      opacity: 0.12;
+      opacity: 0.18;
       animation: floatUp linear infinite;
     }
-
     @keyframes floatUp {
-      0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      10%  { opacity: 0.12; }
-      90%  { opacity: 0.08; }
-      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+      0%   { transform: translateY(110vh) rotate(0deg); }
+      100% { transform: translateY(-10vh) rotate(360deg); }
     }
 
-    /* Main wrapper */
-    .wrapper {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px 60px;
-      min-height: 100vh;
+    /* ── HEADER ── */
+    header {
+      position: relative; z-index: 10;
+      text-align: center;
+      padding: 40px 20px 20px;
     }
 
-    /* Card */
-    .card {
+    .site-title {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      color: var(--pink-deep);
+      text-shadow: 3px 3px 0 var(--white), 5px 5px 0 var(--pink-soft);
+      letter-spacing: 2px;
+      animation: titlePop 0.8s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes titlePop {
+      from { transform: scale(0.5) rotate(-5deg); opacity: 0; }
+      to   { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .site-subtitle {
+      font-size: 1rem;
+      color: var(--pink-mid);
+      margin-top: 6px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    /* ── HELLO KITTY SVG CHARACTER ── */
+    .kitty-wrap {
+      display: flex; justify-content: center;
+      margin: 20px 0 10px;
+      animation: kittyFloat 3s ease-in-out infinite;
+    }
+    @keyframes kittyFloat {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    .kitty-svg { width: 160px; height: 160px; filter: drop-shadow(0 8px 20px #ff6eb480); }
+
+    /* ── PROFILE CARD ── */
+    .profile-card {
+      position: relative; z-index: 10;
+      max-width: 520px; margin: 0 auto 30px;
       background: var(--white);
-      border-radius: 32px;
-      max-width: 480px;
-      width: 100%;
-      box-shadow:
-        0 0 0 6px var(--pink-light),
-        0 20px 60px rgba(214, 51, 132, 0.18),
-        0 4px 20px rgba(214, 51, 132, 0.1);
-      overflow: hidden;
-      animation: fadeSlideIn 0.9s ease both;
+      border-radius: 30px;
+      border: 3px solid var(--pink-soft);
+      padding: 30px 30px 25px;
+      box-shadow: 0 10px 40px #ff6eb430, inset 0 0 0 1px #fff;
+      animation: cardSlide 0.9s 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes cardSlide {
+      from { transform: translateY(40px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
     }
 
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(40px) scale(0.96); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    /* Banner */
-    .banner {
-      height: 140px;
-      background: linear-gradient(135deg, #f48fb1 0%, #e91e8c 40%, #ad1457 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .banner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(247,200,115,0.3) 0%, transparent 40%);
-    }
-
-    .banner-sparkles {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      font-size: 1.4rem;
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
-    .sparkle {
-      animation: twinkle 2s ease-in-out infinite;
-    }
-    .sparkle:nth-child(2) { animation-delay: 0.4s; }
-    .sparkle:nth-child(3) { animation-delay: 0.8s; }
-    .sparkle:nth-child(4) { animation-delay: 1.2s; }
-    .sparkle:nth-child(5) { animation-delay: 1.6s; }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.35; transform: scale(1); }
-      50%       { opacity: 0.7;  transform: scale(1.3); }
-    }
-
-    /* Avatar */
-    .avatar-wrap {
-      display: flex;
-      justify-content: center;
-      margin-top: -52px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .avatar-ring {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      padding: 4px;
-      background: linear-gradient(135deg, var(--gold), var(--pink-deep), #c2185b);
-      box-shadow: 0 8px 25px rgba(214,51,132,0.35);
-      animation: pulse 3s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 8px 25px rgba(214,51,132,0.35); }
-      50%       { box-shadow: 0 8px 35px rgba(214,51,132,0.6); }
-    }
-
-    .avatar-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: linear-gradient(160deg, #fce4ec, #f8bbd9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 3px solid var(--white);
-      overflow: hidden;
-    }
-
-    /* Content */
-    .content {
-      padding: 16px 32px 32px;
+    .profile-name {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      color: var(--pink-deep);
       text-align: center;
     }
 
-    .name {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 4px;
-      letter-spacing: -0.5px;
+    .profile-bio {
+      text-align: center;
+      color: #c2567a;
+      font-size: 0.95rem;
+      margin-top: 8px;
+      line-height: 1.6;
     }
 
-    .username {
-      font-size: 0.9rem;
-      color: var(--pink-mid);
-      font-weight: 600;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
+    .tags {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+      margin-top: 14px;
     }
-
-    .badges {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-
-    .badge {
+    .tag {
       background: var(--pink-pale);
+      border: 2px solid var(--pink-soft);
       color: var(--pink-deep);
-      border: 1.5px solid var(--pink-light);
-      border-radius: 30px;
-      padding: 4px 14px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      transition: background 0.2s, transform 0.2s;
+      font-weight: 700; font-size: 0.82rem;
+      padding: 5px 14px; border-radius: 50px;
+      transition: all .2s;
+    }
+    .tag:hover { background: var(--pink-mid); color: #fff; transform: scale(1.08); }
+
+    /* ── SECTION GRID ── */
+    .sections {
+      position: relative; z-index: 10;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
     }
 
-    .badge:hover {
-      background: var(--pink-deep);
-      color: var(--white);
-      transform: scale(1.06);
-    }
-
-    .bio {
-      font-size: 0.97rem;
-      color: var(--text-mid);
-      line-height: 1.7;
-      margin-bottom: 24px;
-      font-style: italic;
-      padding: 14px 16px;
-      background: var(--pink-blush);
-      border-radius: 16px;
-      border-left: 3px solid var(--pink-mid);
-    }
-
-    /* Stats */
-    .stats {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 28px;
-      background: var(--pink-pale);
-      border-radius: 20px;
-      padding: 16px 8px;
-    }
-
-    .stat { text-align: center; }
-
-    .stat-value {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--pink-deep);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.72rem;
-      color: var(--text-mid);
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-top: 4px;
-      text-transform: uppercase;
-    }
-
-    .divider {
-      width: 1px;
-      background: var(--pink-light);
-      align-self: stretch;
-    }
-
-    /* Interests */
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      color: var(--text-dark);
-      font-style: italic;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .section-title::before,
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--pink-light));
-    }
-
-    .section-title::after {
-      background: linear-gradient(to left, transparent, var(--pink-light));
-    }
-
-    .interests {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      margin-bottom: 28px;
-    }
-
-    .interest {
-      background: linear-gradient(135deg, var(--pink-pale), var(--pink-blush));
-      border: 1.5px solid var(--pink-light);
-      border-radius: 20px;
-      padding: 7px 16px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-mid);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.25s;
-    }
-
-    .interest:hover {
-      background: linear-gradient(135deg, #f06292, #e91e8c);
-      color: var(--white);
-      border-color: transparent;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(214,51,132,0.3);
-    }
-
-    /* Social buttons */
-    .socials {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    .social-btn {
-      flex: 1;
-      max-width: 130px;
-      padding: 11px 10px;
-      border-radius: 50px;
-      border: none;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.25s;
-      letter-spacing: 0.3px;
-    }
-
-    .btn-follow {
-      background: linear-gradient(135deg, #e91e8c, #ad1457);
-      color: var(--white);
-      box-shadow: 0 4px 15px rgba(214,51,132,0.4);
-    }
-
-    .btn-follow:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(214,51,132,0.5);
-    }
-
-    .btn-msg {
+    .card {
       background: var(--white);
+      border-radius: 24px;
+      border: 2.5px solid var(--pink-soft);
+      padding: 24px 22px;
+      box-shadow: 0 6px 28px #ff6eb420;
+      transition: transform .3s, box-shadow .3s;
+      animation: cardFadeIn 0.7s both;
+    }
+    .card:hover { transform: translateY(-6px) rotate(-0.5deg); box-shadow: 0 16px 40px #ff6eb440; }
+
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .card:nth-child(1) { animation-delay: .1s; }
+    .card:nth-child(2) { animation-delay: .2s; }
+    .card:nth-child(3) { animation-delay: .3s; }
+    .card:nth-child(4) { animation-delay: .4s; }
+    .card:nth-child(5) { animation-delay: .5s; }
+
+    .card-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 16px;
+    }
+    .card-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--pink-mid), var(--pink-deep));
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 12px #e91e8c40;
+      flex-shrink: 0;
+    }
+    .card-title {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.3rem;
       color: var(--pink-deep);
-      border: 2px solid var(--pink-light);
     }
 
-    .btn-msg:hover {
-      background: var(--pink-pale);
-      border-color: var(--pink-mid);
-      transform: translateY(-2px);
+    /* Items list inside cards */
+    .item-list { list-style: none; }
+    .item-list li {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px;
+      border-radius: 12px;
+      margin-bottom: 7px;
+      background: var(--pink-pastel);
+      border: 1.5px solid var(--pink-soft);
+      font-size: 0.9rem; color: #a03060; font-weight: 600;
+      transition: background .2s, transform .2s;
+    }
+    .item-list li:hover { background: var(--pink-pale); transform: translateX(4px); }
+    .item-list li span.bullet {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--pink-mid); flex-shrink: 0;
+      box-shadow: 0 0 0 3px var(--pink-soft);
     }
 
-    /* Bottom decoration */
-    .footer-deco {
-      margin-top: 30px;
-      font-size: 1.2rem;
-      letter-spacing: 6px;
-      opacity: 0.5;
-      animation: breathe 3s ease-in-out infinite;
+    /* Music card special */
+    .music-bars {
+      display: flex; align-items: flex-end; gap: 4px;
+      height: 28px; margin-right: 4px;
+    }
+    .bar {
+      width: 5px; border-radius: 3px;
+      background: var(--pink-mid);
+      animation: bounce 0.8s ease-in-out infinite alternate;
+    }
+    .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+    .bar:nth-child(2) { height: 100%; animation-delay: .15s; }
+    .bar:nth-child(3) { height: 40%; animation-delay: .3s; }
+    .bar:nth-child(4) { height: 80%; animation-delay: .1s; }
+    .bar:nth-child(5) { height: 55%; animation-delay: .25s; }
+    @keyframes bounce {
+      from { transform: scaleY(0.4); }
+      to   { transform: scaleY(1); }
     }
 
-    @keyframes breathe {
-      0%, 100% { opacity: 0.4; }
-      50%       { opacity: 0.75; }
+    /* Stars rating */
+    .stars { color: #ffcc00; font-size: 0.85rem; }
+
+    /* ── BOW DIVIDER ── */
+    .bow-divider {
+      text-align: center;
+      font-size: 1.8rem;
+      margin: 10px 0 24px;
+      opacity: 0.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 10;
+      text-align: center; padding: 30px 20px;
+      color: var(--pink-mid); font-size: 0.88rem; font-weight: 600;
+    }
+    footer span { color: var(--pink-deep); }
+
+    /* ── SPARKLE CURSOR TRAIL ── */
+    .sparkle {
+      position: fixed; pointer-events: none; z-index: 9999;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: radial-gradient(circle, #fff, var(--pink-mid));
+      transform: translate(-50%, -50%);
+      animation: sparkleOut 0.6s forwards;
+    }
+    @keyframes sparkleOut {
+      0%   { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+      100% { transform: translate(-50%,-50%) scale(0); opacity: 0; }
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+      .sections { grid-template-columns: 1fr; }
+      .kitty-svg { width: 120px; height: 120px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Floating hearts background -->
-<div class="hearts-bg" id="heartsBg"></div>
+<!-- Floating hearts/stars bg -->
+<div class="floaties" id="floaties"></div>
 
-<div class="wrapper">
-  <div class="card">
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="site-title">✿ Stella Laura ✿</div>
+  <div class="site-subtitle">♡ minha página fofa ♡</div>
 
-    <!-- Banner -->
-    <div class="banner">
-      <div class="banner-sparkles">
-        <span class="sparkle">✨</span>
-        <span class="sparkle">🌸</span>
-        <span class="sparkle">💖</span>
-        <span class="sparkle">🌸</span>
-        <span class="sparkle">✨</span>
-      </div>
-    </div>
-
-    <!-- Avatar -->
-    <div class="avatar-wrap">
-      <div class="avatar-ring">
-        <div class="avatar-inner">
-          <svg viewBox="0 0 100 100" width="90" height="90" xmlns="http://www.w3.org/2000/svg">
-            <!-- Body -->
-            <ellipse cx="50" cy="88" rx="22" ry="16" fill="#e91e8c" opacity="0.85"/>
-            <!-- Neck -->
-            <rect x="44" y="63" width="12" height="9" rx="4" fill="#f8bbd9"/>
-            <!-- Head -->
-            <ellipse cx="50" cy="52" rx="18" ry="20" fill="#f8bbd9"/>
-            <!-- Hair base -->
-            <ellipse cx="50" cy="37" rx="19" ry="11" fill="#d63384"/>
-            <!-- Hair left tail -->
-            <path d="M31,50 Q16,65 18,84 Q22,92 27,87 Q25,72 33,60 Z" fill="#d63384"/>
-            <!-- Hair right tail -->
-            <path d="M69,50 Q84,65 82,84 Q78,92 73,87 Q75,72 67,60 Z" fill="#d63384"/>
-            <!-- Bangs -->
-            <path d="M32,43 Q36,29 50,27 Q64,29 68,43 Q60,36 50,35 Q40,36 32,43 Z" fill="#ad1457"/>
-            <!-- Eyes -->
-            <ellipse cx="42" cy="52" rx="4.5" ry="5.5" fill="#6a1b9a"/>
-            <ellipse cx="58" cy="52" rx="4.5" ry="5.5" fill="#6a1b9a"/>
-            <circle cx="43.5" cy="50" r="1.8" fill="white"/>
-            <circle cx="59.5" cy="50" r="1.8" fill="white"/>
-            <!-- Blush -->
-            <ellipse cx="36" cy="58" rx="4.5" ry="2.5" fill="#f06292" opacity="0.5"/>
-            <ellipse cx="64" cy="58" rx="4.5" ry="2.5" fill="#f06292" opacity="0.5"/>
-            <!-- Mouth -->
-            <path d="M44,63 Q50,68 56,63" stroke="#d63384" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <!-- Bow left -->
-            <path d="M27,41 Q23,35 27,31 Q31,35 27,41 Z" fill="#f7c873"/>
-            <path d="M27,41 Q31,35 35,38 Q31,44 27,41 Z" fill="#f7c873"/>
-            <circle cx="27" cy="41" r="2" fill="#fff0a0"/>
-            <!-- Bow right -->
-            <path d="M73,41 Q77,35 73,31 Q69,35 73,41 Z" fill="#f7c873"/>
-            <path d="M73,41 Q69,35 65,38 Q69,44 73,41 Z" fill="#f7c873"/>
-            <circle cx="73" cy="41" r="2" fill="#fff0a0"/>
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    <!-- Content -->
-    <div class="content">
-
-      <div class="name">Stella Laura</div>
-      <div class="username">@stellalaura ✦</div>
-
-      <div class="badges">
-        <span class="badge">💖 Lifestyle</span>
-        <span class="badge">🎀 Moda</span>
-        <span class="badge">✨ Criativa</span>
-      </div>
-
-      <div class="bio">
-        "Vivendo cada momento com leveza, amor e muito brilho. 
-        Apaixonada por flores, café gelado e pôr do sol cor-de-rosa." 🌷
-      </div>
-
-      <!-- Stats -->
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-value">4.2k</div>
-          <div class="stat-label">Seguidores</div>
-        </div>
-        <div class="divider"></div>
-        <div class="stat">
-          <div class="stat-value">318</div>
-          <div class="stat-label">Seguindo</div>
-        </div>
-        <div class="divider"></div>
-        <div class="stat">
-          <div class="stat-value">92</div>
-          <div class="stat-label">Posts</div>
-        </div>
-      </div>
-
-      <!-- Interests -->
-      <div class="section-title">interesses</div>
-      <div class="interests">
-        <span class="interest">🌺 Flores</span>
-        <span class="interest">📚 Leitura</span>
-        <span class="interest">☕ Café</span>
-        <span class="interest">🎨 Arte</span>
-        <span class="interest">🎵 Música</span>
-        <span class="interest">🐾 Pets</span>
-        <span class="interest">✈️ Viagens</span>
-        <span class="interest">💅 Beleza</span>
-      </div>
-
-      <!-- Buttons -->
-      <div class="socials">
-        <button class="social-btn btn-follow">💖 Seguir</button>
-        <button class="social-btn btn-msg">💬 Mensagem</button>
-      </div>
-
-    </div>
+  <!-- Hello Kitty SVG -->
+  <div class="kitty-wrap">
+    <svg class="kitty-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Body -->
+      <ellipse cx="100" cy="145" rx="50" ry="45" fill="#fff" stroke="#ffb3d9" stroke-width="2"/>
+      <!-- Arms -->
+      <ellipse cx="58" cy="148" rx="14" ry="8" fill="#fff" stroke="#ffb3d9" stroke-width="2" transform="rotate(-20 58 148)"/>
+      <ellipse cx="142" cy="148" rx="14" ry="8" fill="#fff" stroke="#ffb3d9" stroke-width="2" transform="rotate(20 142 148)"/>
+      <!-- Legs -->
+      <ellipse cx="82" cy="186" rx="13" ry="8" fill="#fff" stroke="#ffb3d9" stroke-width="2"/>
+      <ellipse cx="118" cy="186" rx="13" ry="8" fill="#fff" stroke="#ffb3d9" stroke-width="2"/>
+      <!-- Tail -->
+      <path d="M148 160 Q165 145 160 130" stroke="#ffb3d9" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- Head -->
+      <ellipse cx="100" cy="92" rx="52" ry="50" fill="#fff" stroke="#ffb3d9" stroke-width="2"/>
+      <!-- Ears -->
+      <ellipse cx="62" cy="50" rx="18" ry="16" fill="#fff" stroke="#ffb3d9" stroke-width="2"/>
+      <ellipse cx="138" cy="50" rx="18" ry="16" fill="#fff" stroke="#ffb3d9" stroke-width="2"/>
+      <!-- Inner ears -->
+      <ellipse cx="62" cy="50" rx="11" ry="10" fill="#ffb3d9"/>
+      <ellipse cx="138" cy="50" rx="11" ry="10" fill="#ffb3d9"/>
+      <!-- Big Red Bow -->
+      <ellipse cx="148" cy="58" rx="16" ry="10" fill="#e8003a" transform="rotate(-20 148 58)"/>
+      <ellipse cx="168" cy="50" rx="16" ry="10" fill="#e8003a" transform="rotate(20 168 50)"/>
+      <circle cx="158" cy="55" r="7" fill="#ff4d79"/>
+      <!-- Eyes -->
+      <ellipse cx="84" cy="94" rx="7" ry="7" fill="#1a1a1a"/>
+      <ellipse cx="116" cy="94" rx="7" ry="7" fill="#1a1a1a"/>
+      <circle cx="86" cy="92" r="2.5" fill="#fff"/>
+      <circle cx="118" cy="92" r="2.5" fill="#fff"/>
+      <!-- Nose -->
+      <ellipse cx="100" cy="103" rx="5" ry="3.5" fill="#ff6eb4"/>
+      <!-- Whiskers -->
+      <line x1="60" y1="100" x2="85" y2="103" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="60" y1="108" x2="85" y2="107" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="115" y1="103" x2="140" y2="100" stroke="#ccc" stroke-width="1.5"/>
+      <line x1="115" y1="107" x2="140" y2="108" stroke="#ccc" stroke-width="1.5"/>
+      <!-- Shirt stripe -->
+      <rect x="72" y="118" width="56" height="8" rx="4" fill="#ffb3d9"/>
+      <!-- Pocket bow on shirt -->
+      <ellipse cx="86" cy="136" rx="8" ry="5" fill="#ff6eb4" transform="rotate(-15 86 136)"/>
+      <ellipse cx="96" cy="132" rx="8" ry="5" fill="#ff6eb4" transform="rotate(15 96 132)"/>
+      <circle cx="91" cy="134" r="4" fill="#e91e8c"/>
+    </svg>
   </div>
+</header>
 
-  <div class="footer-deco">🌸 ✦ 💖 ✦ 🌸</div>
+<!-- ══ PROFILE CARD ══ -->
+<div class="profile-card">
+  <div class="profile-name">Stella Laura 🎀</div>
+  <div class="profile-bio">
+    ✨ bem-vinda à minha página! aqui é o meu cantinho fofo<br>
+    onde eu compartilho tudo que amo na vida 💕<br>
+    <em>cheia de amor, glitter e boa música</em> 🌸
+  </div>
+  <div class="tags">
+    <span class="tag">🐾 pet lover</span>
+    <span class="tag">🎵 música</span>
+    <span class="tag">📺 dorama</span>
+    <span class="tag">🎤 k-pop</span>
+    <span class="tag">🎬 filmes</span>
+    <span class="tag">🎀 hello kitty</span>
+  </div>
 </div>
 
+<div class="bow-divider">🎀 ✿ 🎀 ✿ 🎀</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  feito com <span>♡</span> para Stella Laura &nbsp;·&nbsp; 🎀 Hello Kitty forever 🎀
+</footer>
+
 <script>
-  // Generate floating hearts
-  const bg = document.getElementById('heartsBg');
-  const emojis = ['💗','🌸','✨','💕','🌷','💖','🎀','🌺'];
-  for (let i = 0; i < 18; i++) {
+  // ── Floating shapes background ──
+  const floaties = document.getElementById('floaties');
+  const shapes = ['♡','✿','★','🎀','♡','✦','✿','♡'];
+  for (let i = 0; i < 20; i++) {
     const el = document.createElement('span');
-    el.className = 'heart';
-    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    el.style.left = Math.random() * 100 + 'vw';
-    el.style.animationDuration = (8 + Math.random() * 14) + 's';
-    el.style.animationDelay = (Math.random() * 10) + 's';
-    el.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
-    bg.appendChild(el);
+    el.className = 'floaty';
+    el.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+    el.style.cssText = `
+      left: ${Math.random()*100}%;
+      font-size: ${0.8 + Math.random()*1.6}rem;
+      color: #e91e8c;
+      animation-duration: ${6 + Math.random()*10}s;
+      animation-delay: ${Math.random()*8}s;
+    `;
+    floaties.appendChild(el);
   }
 
-  // Follow button toggle
-  const followBtn = document.querySelector('.btn-follow');
-  let following = false;
-  followBtn.addEventListener('click', () => {
-    following = !following;
-    followBtn.textContent = following ? '✓ Seguindo' : '💖 Seguir';
-    followBtn.style.background = following
-      ? 'linear-gradient(135deg, #8e24aa, #6a1b9a)'
-      : 'linear-gradient(135deg, #e91e8c, #ad1457)';
+  // ── Cursor sparkle trail ──
+  document.addEventListener('mousemove', e => {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.left = e.clientX + 'px';
+    s.style.top  = e.clientY + 'px';
+    s.style.background = `hsl(${310 + Math.random()*40}, 90%, ${60 + Math.random()*20}%)`;
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 600);
   });
 </script>
 </body>
